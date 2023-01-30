@@ -60,12 +60,16 @@ jobs:
           ./scripts/feeds install -a
 
       - name: Generate configuration file
+          
+        
+        run: |
           cat >> .config <<EOF
           CONFIG_PACKAGE_kmod-mt7915e=y
+          CONFIG_PACKAGE_kmod-mt76x2=y
+          CONFIG_PACKAGE_kmod-mt7921e=y
           CONFIG_PACKAGE_luci-app-easymesh=y
           EOF
-        
-        run: make defconfig
+          make defconfig
 
       - name: Make download
         run: |
